@@ -15,7 +15,7 @@ function validate($inputData){
 //Redirect from 1 page to another page with the message (status)
 function Redirect($url,$status){
   $_SESSION['status'] = $status;
-  header('Location : '. $url);
+  header('Location: '. $url);
   exit(0);
 }
 
