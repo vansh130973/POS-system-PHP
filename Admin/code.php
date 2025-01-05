@@ -90,4 +90,46 @@ if(isset($_POST['updateAdmin'])){
   }
 }
 
+
+if(isset($_POST['saveCategory']))
+{
+  $name = validate($_POST['name']);
+  $description = validate($_POST['description']);
+  $status = isset($_POST['status']) == true ? 1:0;
+
+  $data = [
+    'name' => $name,
+    'description' => $description,
+    'status' => $status
+  ];
+  $result = insert('categories',$data);
+  if($result){
+    Redirect('categories.php','categories Created Successfully');
+  }else{
+    Redirect('categories-create.php','Something went wrong!');
+  }
+
+}
+
+if(isset($_POST['updateCategory'])){
+  $categoryId = validate($_POST['categoryId']);
+  $name = validate($_POST['name']);
+  $description = validate($_POST['description']);
+  $status = isset($_POST['status']) == true ? 1:0;
+
+  $data = [
+    'name' => $name,
+    'description' => $description,
+    'status' => $status
+  ];
+  $result = update('categories',$categoryId,$data);
+  if($result){
+    Redirect('categories-edit.php?id='.$categoryId,'Categories Updated Successfully');
+  }else{
+    Redirect('categories-edit.php?id='.$categoryId,'Something went wrong!');
+  }
+
+}
+
+
 ?>
