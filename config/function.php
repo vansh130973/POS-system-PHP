@@ -150,4 +150,10 @@ function checkParamId($type){
   }
 }
 
+function logoutSeesion(){
+
+  unset($_SESSION['loggedIn']);
+  unset($_SESSION['loggedInUser']);
+}
+
 ?>
